@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/nav.css" />
+    <link rel="stylesheet" href="assets/css/project-form.css" />
+    <script src="assets/js/myproject.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <title>My Project</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar">
+        <div class="navbar-left">
+          <img src="assets/img/dumbways.png" alt="dumbways" />
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="myproject.html">My Project</a></li>
+          </ul>
+        </div>
+        <div class="navbar-right">
+          <a href="contact.html">Contact Me</a>
+          <i
+            class="fa-solid fa-bars"
+            id="burger-button"
+            onclick="openBurger()"
+          ></i>
+        </div>
+      </nav>
+      <div class="burger" id="burger">
+        <a href="index.html">Home</a>
+        <a href="myproject.html">My Project</a>
+        <a href="contact.html">Contact Me</a>
+      </div>
+      <div class="project">
+        <form method="POST">
+          <h1>CREATE PROJECT</h1>
+          <label for="name">Project Name</label>
+          <input type="text" id="name" />
+          <div class="tgl">
+            <div class="start">
+              <label for="start-d">Start Date</label><br />
+              <input type="date" id="start-d" name="start-d" />
+            </div>
+            <div class="end">
+              <label for="end-d">End Date</label><br />
+              <input type="date" id="end-d" name="end-d" />
+            </div>
+          </div>
+          <label for="content">Content</label>
+          <textarea name="content" id="content"></textarea>
+          <div class="check">
+            <label for="skill">Skill</label><br />
+            <div class="check1">
+              <input class="tech" type="checkbox" value="Node Js" id="nodejs" />
+              <label for="nodejs">Node Js</label><br />
+              <input class="tech" type="checkbox" value="React Js" id="react" />
+              <label for="react">React Js</label><br />
+            </div>
+            <div class="check2">
+              <input class="tech" type="checkbox" value="Next Js" id="nextjs" />
+              <label for="nextjs">Next Js</label><br />
+              <input
+                class="tech"
+                type="checkbox"
+                value="TypeScript"
+                id="typescript"
+              />
+              <label for="typescript">Typescript</label><br />
+            </div>
+          </div>
+          <label for="upload">Upload Image</label>
+          <input type="file" id="upload" class="upload" />
+          <button
+            class="submit-button"
+            type="submit"
+            onclick="handleProject(event)"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="project-post">
+      <h1 class="title">My Project</h1>
+      <div class="display-post">
+        <div class="mobile">
+          <div id="card"></div>
+        </div>
+      </div>
+    </div>
+    <script src="assets/js/navbar.js"></script>
+  </body>
+</html>

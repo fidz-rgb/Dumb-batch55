@@ -1,0 +1,134 @@
+/* home */
+
+.content {
+  width: 900px;
+  height: 400px;
+  border-radius: 10px;
+  margin: 100px auto;
+  padding: 40px;
+  background-color: white;
+  display: flex;
+}
+
+.txt {
+  width: 500px;
+  float: left;
+  padding-right: 20px;
+}
+.txt h1 {
+  padding-bottom: 10px;
+}
+.txt p {
+  text-align: justify;
+}
+
+#button1 {
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  position: absolute;
+  margin-top: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+#button1:hover {
+  color: orangered;
+  transition: all 0.3s ease 0s;
+}
+#button2 {
+  position: absolute;
+  margin: 10px 0 0 100px;
+}
+
+#button2 img {
+  position: absolute;
+  margin-left: 10px;
+}
+
+/* pmberian property hover harus tnpa spasi sprti= button:hover */
+.txt a {
+  text-decoration: none;
+  padding: 10px;
+  color: black;
+}
+.txt img {
+  width: 18px;
+}
+.photo {
+  width: 300px;
+  float: right;
+  box-shadow: 1px 1px 10px grey;
+  margin: auto;
+  border-radius: 10px;
+  padding-bottom: 10px;
+}
+.photo img {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+}
+.photo h3,
+p {
+  text-align: center;
+}
+.icon {
+  text-align: center;
+  padding-top: 10px;
+}
+/* -------------------------- */
+
+/* responsiv */
+
+@media (max-width: 1024px) {
+}
+
+@media only screen and (max-width: 750px) {
+  .content {
+    flex-direction: column;
+    width: 600px;
+    height: auto;
+    border-radius: 10px;
+    padding: 40px;
+    background-color: white;
+  }
+
+  .txt {
+    flex-direction: column;
+    font-size: 3vw;
+    padding-bottom: 70px;
+    width: 100%;
+  }
+
+  .txt h1 {
+    padding-bottom: 10px;
+  }
+
+  .txt p {
+    text-align: justify;
+  }
+
+  #button1 {
+    position: absolute;
+  }
+  #button1:hover {
+    color: orangered;
+    transition: all 0.3s ease 0s;
+  }
+  #button2 {
+    position: absolute;
+    margin: 10px 0 0 120px;
+  }
+  
+  #button2 img {
+    position: absolute;
+    margin-left: 10px;
+  }
+
+  .photo {
+    flex-direction: column;
+    margin: auto;
+    width: 400px;
+  }
+}
+
+@media (max-width: 500px) {
+}

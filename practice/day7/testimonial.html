@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/nav.css" />
+    <link rel="stylesheet" href="assets/css/testimoni.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <title>Testimonials</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar">
+        <div class="navbar-left">
+          <img src="assets/img/dumbways.png" alt="dumbways" />
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="myproject.html">My Project</a></li>
+            <li><a href="testimonial.html">Testimonials</a></li>
+          </ul>
+        </div>
+        <div class="navbar-right">
+          <a href="contact.html">Contact Me</a>
+          <i
+            class="fa-solid fa-bars"
+            id="burger-button"
+            onclick="openBurger()"
+          ></i>
+        </div>
+      </nav>
+      <div class="burger" id="burger">
+        <a href="index.html">Home</a>
+        <a href="myproject.html">My Project</a>
+        <a href="contact.html">Contact Me</a>
+        <a href="testimonial.html">Testimonials</a>
+      </div>
+    </div>
+
+    <!-- testimonial page -->
+    <div class="testimonial">
+      <h2>My Testimonials</h2>
+      <div class="grid-content" id="testimonial"></div>
+    </div>
+    <script src="assets/js/navbar.js"></script>
+    <script src="assets/js/testimoni.js"></script>
+  </body>
+</html>
