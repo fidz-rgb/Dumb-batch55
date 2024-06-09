@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="w1/assets/css/style.css" />
+    <link rel="stylesheet" href="w2/assets/css/style.css" />
+    <link rel="stylesheet" href="w2/assets/css/nav.css" />
+    <link rel="stylesheet" href="w2/assets/css/home.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -14,16 +16,28 @@
     <div class="container">
       <nav class="navbar">
         <div class="navbar-left">
-          <img src="w1/assets/img/dumbways.png" alt="dumbways" />
+          <img src="w2/assets/img/dumbways.png" alt="dumbways" />
           <ul>
             <li><a href="#">Home</a></li>
-            <li><a href="w1/myproject.html">My Project</a></li>
+            <li><a href="w2/myproject.html">My Project</a></li>
+            <li><a href="w2/testimonial.html">Testimonials</a></li>
           </ul>
         </div>
-        <div class="navbar-right">
-          <a href="w1/contact.html">Contact Me</a>
+        <div class="navbar-right">        
+          <a href="w2/contact.html">Contact Me</a>
+          <i
+              class="fa-solid fa-bars"
+              id="burger-button"
+              onclick="openBurger()"
+            ></i>
         </div>
       </nav>
+      <div class="burger" id="burger">
+        <a href="w2/index.html">Home</a>
+        <a href="w2/myproject.html">My Project</a>
+        <a href="w2/contact.html">Contact Me</a>
+        <a href="w2/testimonial.html">Testimonials</a>
+      </div>
     </div>
     <div class="content">
       <div class="txt">
@@ -50,11 +64,11 @@
         >
         <!-- <a href="">Contact</a> -->
         <a href="" id="button2"
-          >Download CV <img src="w1/assets/img/downloads.png"
+          >Download CV <img src="w2/assets/img/downloads.png"
         /></a>
       </div>
       <div class="photo">
-        <img src="w1/assets/img/prof3.gif" alt="" />
+        <img src="w2/assets/img/prof3.gif" alt="" />
         <h3>Hafidz</h3>
         <p>Fullstack Developer</p>
         <div class="icon">
@@ -90,6 +104,7 @@
       </div>
     </div>
     <!-- Javascript -->
-    <script src="w1/assets/js/contact.js"></script>
+    <script src="w2/assets/js/contact.js"></script>
+    <script src="w2/assets/js/navbar.js"></script>
   </body>
 </html>
