@@ -1,0 +1,83 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/nav.css" />
+    <link rel="stylesheet" href="../assets/css/project-form.css" />
+    <script src="../assets/js/myproject.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <title>My Project</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar">
+        <div class="navbar-left">
+          <img src="../assets/img/dumbways.png" alt="dumbways" />
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="myproject">My Project</a></li>
+            <li><a href="testimonial">Testimonials</a></li>
+          </ul>
+        </div>
+        <div class="navbar-right">
+          <a href="contact">Contact Me</a>
+          <i
+            class="fa-solid fa-bars"
+            id="burger-button"
+            onclick="openBurger()"
+          ></i>
+        </div>
+      </nav>
+      <div class="burger" id="burger">
+        <a href="/">Home</a>
+        <a href="myproject">My Project</a>
+        <a href="contact">Contact Me</a>
+        <a href="testimonial">Testimonials</a>
+      </div>
+    </div>
+
+    {{! display project }}
+    <div class="project-post">
+      <h1 class="title">My Project</h1>
+      <div class="div-add">
+        <a href="/addproject" class="btn-add">Add Blog</a>
+      </div>
+      <div class="display-post">
+        <div class="mobile">
+          <div id="card">
+            {{#each data}}
+              <div class="card-content">
+                <img src={{image}} alt="img" />
+                <a
+                  href="viewproject.html?id=${
+                    key + 1
+                  }"
+                  style="text-decoration : none; margin : 0; color: black;"
+                  target="_blank"
+                ><p class="title-content">{{title}}</p></a>
+                <small>durasi : ${item.duration}</small>
+                <p class="txt-content">{{content}}</p>
+                <i class="fa-brands fa-google-play"></i>
+                <i class="fa-brands fa-android"></i>
+                <i class="fa-brands fa-java"></i>
+                <div class="action">
+                  <form method="" action="/editproject/{{@index}}">
+                    <button>edit</button>
+                  </form>
+                  <form method="post" action="/delproject/{{@index}}">
+                  <button>delete</button>
+                  </form>
+                </div>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../assets/js/navbar.js"></script>
+  </body>
+</html>
