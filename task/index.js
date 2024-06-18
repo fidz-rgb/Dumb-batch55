@@ -36,15 +36,22 @@ app.get("/contact", contact);
 const data = [];
 
 //service
-function home(req, res) {
-  res.render("index");
+// function home(req, res) {
+//   res.render("index");
+// }
+
+async function home(req,res){
+  const query ="SELECT * FROM projects";
+  const obj = await sequelize.query(query, {type: QueryTypes.SELECT});
+  res.render("index", {data: obj});
 }
 
 async function project(req, res) {
-  const query = "SELECT * FROM projects"
+  const query = "SELECT * FROM projects";
   // "SELECT * FROM projects" nama projects-nya diambil berdasarkan nama file yg di postgres
   const obj = await sequelize.query(query, {type: QueryTypes.SELECT}); 
-  res.render("myproject", { data });
+  // console.log("data object : ", obj);
+  res.render("myproject", { data : obj});
 }
 
 function addprojectV(req, res){
@@ -94,15 +101,19 @@ function contact(req, res) {
   res.render("contact");
 }
 
-function Vproject(req, res) {
-  const { id } = req.params;
-  const data = {
-    id: id,
-    title: "title",
-    content: "content",
-  };
-
-  res.render("viewproject", { data: data });
+async function Vproject(req, res) {
+  try{ const {id} = req.params;
+  const view = await sequelize.query(`SELECT * FROM projects WHERE id = ${id}`,
+  {type: QueryTypes.SELECT});
+  console.log(view[0]) 
+  // const { id } = req.params;
+  // const query = "SELECT * FROM projects";
+  // const obj = await sequelize.query(query, {type: QueryTypes.SELECT});
+  // // console.log("project detail =", obj);
+  res.render("viewproject", { data: view[0]});
+}catch (error){
+  throw error
+}
 }
 
 app.listen(port, () => {

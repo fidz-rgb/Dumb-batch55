@@ -14,11 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   project.init({
-    name: DataTypes.STRING,
-    startDate: DataTypes.DATE,
-    endDate: DataTypes.DATE,
-    descrip: DataTypes.STRING,
-    techno: DataTypes.STRING,
+    title: DataTypes.STRING,
+    startd: DataTypes.DATE,
+    endd: DataTypes.DATE,
+    content: DataTypes.STRING,
     image: DataTypes.STRING
   }, {
     sequelize,

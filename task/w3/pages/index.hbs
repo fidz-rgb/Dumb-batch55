@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="../assets/css/style.css" />
     <link rel="stylesheet" href="../assets/css/nav.css" />
     <link rel="stylesheet" href="../assets/css/home.css" />
+    <link rel="stylesheet" href="../assets/css/project-form.css">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -18,12 +19,12 @@
           <img src="../assets/img/dumbways.png" alt="dumbways" />
           <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="myproject">My Project</a></li>
-            <li><a href="testimonial">Testimonials</a></li>
+            <li><a href="/myproject">My Project</a></li>
+            <li><a href="/testimonial">Testimonials</a></li>
           </ul>
         </div>
         <div class="navbar-right">
-          <a href="contact">Contact Me</a>
+          <a href="/contact">Contact Me</a>
           <i
             class="fa-solid fa-bars"
             id="burger-button"
@@ -33,9 +34,9 @@
       </nav>
       <div class="burger" id="burger">
         <a href="/">Home</a>
-        <a href="myproject">My Project</a>
-        <a href="contact">Contact Me</a>
-        <a href="testimonial">Testimonials</a>
+        <a href="/myproject">My Project</a>
+        <a href="/contact">Contact Me</a>
+        <a href="/testimonial">Testimonials</a>
       </div>
     </div>
     <div class="content">
@@ -65,7 +66,7 @@
           <img src="../assets/img/downloads.png" /></a>
       </div>
       <div class="photo">
-        <img src="../assets/img/asset.gif" alt="" />
+        <img src="../assets/img/prof3.gif" alt="" />
         <h3>Hafidz</h3>
         <p>Fullstack Developer</p>
         <div class="icon">
@@ -94,6 +95,34 @@
             ></i></a>
         </div>
       </div>
+    </div>
+    <div class="galproject">
+      <h1>Gallery Project</h1>
+      <div id="card">
+            {{#each data}}
+              <div class="card-content">
+                <img src={{image}} alt="img" />
+                <a
+                  href="/viewproject/{{id}}"
+                  style="text-decoration : none; margin : 0; color: black;"
+                  target="_blank"
+                ><p class="title-content">{{title}}</p></a>
+                <small>durasi : {{this.duration}}</small>
+                <p class="txt-content">{{content}}</p>
+                <i class="fa-brands fa-google-play"></i>
+                <i class="fa-brands fa-android"></i>
+                <i class="fa-brands fa-java"></i>
+                <div class="action">
+                  <form method="" action="/editproject/{{id}}">
+                    <button>edit</button>
+                  </form>
+                  <form method="post" action="/delproject/{{id}}">
+                  <button>delete</button>
+                  </form>
+                </div>
+              </div>
+            {{/each}}
+          </div>
     </div>
     <!-- Javascript -->
     <script src="../assets/js/contact.js"></script>

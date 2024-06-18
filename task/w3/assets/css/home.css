@@ -64,6 +64,7 @@
 }
 .photo img {
   width: 100%;
+  height: 250px;
   border-radius: 10px 10px 0 0;
 }
 .photo h3,
@@ -131,4 +132,23 @@ p {
 }
 
 @media (max-width: 500px) {
+}
+
+/* galproject */
+
+.galproject{
+  width: 100%;
+  height: 400px;
+  background-color: white;
+  margin-bottom: 50px;
+}
+
+.galproject h1{
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+
+.galproject p{
+  text-align: left;
 }

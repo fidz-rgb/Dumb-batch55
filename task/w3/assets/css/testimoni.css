@@ -12,14 +12,9 @@ body {
 .testimonial {
   margin: 0 75px;
 }
+
 .testimonial h1 {
   text-align: center;
-}
-
-.testimonial h2 {
-  text-align: center;
-  font-size: 1.75em;
-  font-weight: bold;
   margin: 100px 0 25px 0;
 }
 
