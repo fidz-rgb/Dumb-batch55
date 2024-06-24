@@ -28,13 +28,46 @@
 // total uang akhir > 1.000.000.000 + 198.150.000 = 1.198.150.000
 
 // program:
-function totalinvest (a,b,c,d){
-   a = 0.035
-   b = 0.13
-   c = 0.145
-   d = 0.125
-    var invA,invB,invC,ttl,ttlAkhir;
-    invA = 350000000 * a;
-    return invA;
-}
-console.log(invA);
+// Total modal awal
+const modalawal = 1000000000;
+
+// Investasi 1: Rp350 juta dengan keuntungan 3.5% per tahun
+const investasi1 = 350000000;
+const keuntungan1 = investasi1 * ( 0.035 * 2);
+let rupiah1 = keuntungan1.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+console.log(rupiah1);
+
+//Sisa modal setelah investasi 1
+let sisaModal = modalawal - investasi1;
+
+// Investasi 2: 30% dari sisa modal dengan keuntungan 13% per tahun
+const investasi2 = sisaModal * 0.30;
+const keuntungan2 = investasi2 * (0.13 * 2);
+let rupiah2 = keuntungan2.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+console.log(rupiah2);
+
+// Sisa modal setelah investasi 2
+sisaModal -= investasi2;
+
+// Investasi 3: 35% dari sisa modal setelah investasi 2 dengan keuntungan 14.2% per tahun
+const investasi3 = sisaModal * 0.35;
+const keuntungan3 = investasi3 * (0.142 * 2);
+let rupiah3 = keuntungan3.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+console.log(rupiah3);
+
+// Sisa modal setelah investasi 3
+sisaModal -= investasi3;
+
+// Investasi 4: Sisa modal setelah investasi 3 dengan keuntungan 12.5% per tahun
+const investasi4 = sisaModal;
+const keuntungan4 = investasi4 * (0.125 * 2);
+let rupiah4 = keuntungan4.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+console.log(rupiah4);
+
+// Total keuntungan setelah 2 tahun
+const totalKeuntungan = keuntungan1 + keuntungan2 + keuntungan3 + keuntungan4;
+let rpttluntung = totalKeuntungan.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+const ttlkseluruhan = modalawal + totalKeuntungan;
+let rpttlseluruh = ttlkseluruhan.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+console.log("Total Keuntungan setelah 2 tahun adalah: Rp " + rpttluntung);
+console.log("Total uang keseluruhan stlah 2 tahun: Rp "+ rpttlseluruh);
