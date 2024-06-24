@@ -3,9 +3,9 @@ const app = express();
 const port = 5000;
 const path = require("path");
 const { title } = require("process");
-const config = require("./config/config.json")
-const {Sequelize, QueryTypes} = require("sequelize")
-const sequelize = new Sequelize(config.development)
+const config = require("./config/config.json");
+const { Sequelize, QueryTypes } = require("sequelize");
+const sequelize = new Sequelize(config.development);
 
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "./w3/pages"));
@@ -40,57 +40,73 @@ const data = [];
 //   res.render("index");
 // }
 
-async function home(req,res){
-  const query ="SELECT * FROM projects";
-  const obj = await sequelize.query(query, {type: QueryTypes.SELECT});
-  res.render("index", {data: obj});
+async function home(req, res) {
+  const query = "SELECT * FROM projects";
+  const obj = await sequelize.query(query, { type: QueryTypes.SELECT });
+  res.render("index", { data: obj });
 }
 
 async function project(req, res) {
   const query = "SELECT * FROM projects";
   // "SELECT * FROM projects" nama projects-nya diambil berdasarkan nama file yg di postgres
-  const obj = await sequelize.query(query, {type: QueryTypes.SELECT}); 
+  const obj = await sequelize.query(query, { type: QueryTypes.SELECT });
   // console.log("data object : ", obj);
-  res.render("myproject", { data : obj});
+  res.render("myproject", { data: obj });
 }
 
-function addprojectV(req, res){
+function addprojectV(req, res) {
   res.render("addproject");
 }
 
-function edprojectV(req, res){
-  const {id} = req.params;
-  const selectedData = data[id]
-  selectedData.id = id
+async function addproject(req, res) {
+  const { title, startd, endd, content } = req.body;
+  const date = new Date();
+  const dateString = date.toISOString().slice(0, 19).replace("T", " ");
 
-  res.render("editproject", {data: selectedData});
-}
-
-function addproject(req, res) {
-  const { title, startd, endd, content} = req.body;
-  data.unshift({ 
-    title,
-    startd,
-    endd, 
-    content,
-    image:"https://i.pinimg.com/474x/f4/f8/48/f4f848c765932b3694f45928d2123bac.jpg" 
-  });
+  const query = `INSERT INTO projects (title,startd,endd,content,image) 
+ VALUES('${title}','${dateString}','${dateString}','${content}','https://i.pinimg.com/originals/6f/1b/f1/6f1bf1e312e5f9ab4d8b66b1b7249326.gif')`;
+  await sequelize.query(query, { type: QueryTypes.INSERT });
+  // console.log(data);
   res.redirect("myproject");
 }
 
-function delproject(req, res){
-  const {id} = req.params;
-  data.splice(id, 1)
-  res.redirect("/myproject")
+async function Vproject(req, res) {
+  try {
+    const { id } = req.params;
+    const view = await sequelize.query(
+      `SELECT * FROM projects WHERE id = ${id}`,
+      { type: QueryTypes.SELECT }
+    );
+    // console.log(view[0])
+    res.render("viewproject", { data: view[0] });
+  } catch (error) {
+    throw error;
+  }
 }
 
-function edproject(req, res){
-  const{id, title, content} = req.body
-  data[id] = {
-    title,
-    content
-  }
-  res.redirect("/myproject")
+async function edprojectV(req, res) {
+  const { id } = req.params;
+  const edt = await sequelize.query(`SELECT * FROM projects WHERE id = ${id}`, {
+    type: QueryTypes.SELECT,
+  });
+
+  res.render("editproject", { data: edt[0] });
+}
+
+async function edproject(req, res) {
+  const { id,title, startd, endd, content } = req.body;
+  const date = new Date();
+  const dateString = date.toISOString().slice(0, 19).replace("T", " ");
+  const query = `UPDATE projects SET title='${title}', startd='${dateString}', endd='${dateString}',content='${content}' WHERE id = ${id}`;
+  await sequelize.query(query, { type: QueryTypes.UPDATE });
+  res.redirect("/myproject");
+}
+
+async function delproject(req, res) {
+  const { id } = req.params;
+  const query = `DELETE FROM projects WHERE id=${id} `
+  await sequelize.query(query, { type: QueryTypes.DELETE });
+  res.redirect("/myproject");
 }
 
 function testimonial(req, res) {
@@ -99,21 +115,6 @@ function testimonial(req, res) {
 
 function contact(req, res) {
   res.render("contact");
-}
-
-async function Vproject(req, res) {
-  try{ const {id} = req.params;
-  const view = await sequelize.query(`SELECT * FROM projects WHERE id = ${id}`,
-  {type: QueryTypes.SELECT});
-  console.log(view[0]) 
-  // const { id } = req.params;
-  // const query = "SELECT * FROM projects";
-  // const obj = await sequelize.query(query, {type: QueryTypes.SELECT});
-  // // console.log("project detail =", obj);
-  res.render("viewproject", { data: view[0]});
-}catch (error){
-  throw error
-}
 }
 
 app.listen(port, () => {

@@ -48,11 +48,11 @@
           <div class="tgl">
             <div class="start">
               <label for="start-d">Start Date</label><br />
-              <input type="date" id="start-d" name="start-d" />
+              <input type="date" id="start-d" name="start-d" value="{{data.startd}}"/>
             </div>
             <div class="end">
               <label for="end-d">End Date</label><br />
-              <input type="date" id="end-d" name="end-d" />
+              <input type="date" id="end-d" name="end-d" value="{{data.end}}"/>
             </div>
           </div> 
           <label for="content">Content</label>
@@ -73,8 +73,8 @@
             </div>
           </div>
           <label for="upload">Upload Image</label>
-          <input type="file" id="upload" class="upload" />
-          <button class="submit-button" type="submit" onclick="handleProject(event)">
+          <input type="file" id="upload" class="upload" value="{{data.image}}"/>
+          <button class="submit-button" type="submit">
             Edit
           </button>
         </form>
