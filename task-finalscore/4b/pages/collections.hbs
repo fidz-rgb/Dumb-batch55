@@ -34,13 +34,13 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active fw-semibold" href="#">Collections</a>
+              <a class="nav-link active fw-semibold" href="collections">Collections</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="tasks.html">Tasks</a>
+              <a class="nav-link" href="tasks">Tasks</a>
             </li>
           </ul>
         </div>
@@ -50,9 +50,17 @@
     <div class="container mx-5 my-5 bg-body-tertiary border-start">
         <div class="content p-3">
           <h1>List Collections</h1>
-          <p style="text-align: justify;">
-            
-          </p>
+          {{#each data}}
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{name}}</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">ID Collection: {{id}}</h6>
+              <p class="card-text">ID User: {{user_id}}</p>
+              {{!-- <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a> --}}
+            </div>
+          </div>
+          {{/each}}
         </div>
       </div>
     <script
