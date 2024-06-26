@@ -1,0 +1,19 @@
+{
+  "name": "hafidz",
+  "version": "1.0.0",
+  "description": "finalscoring",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  
+  "dependencies": {
+    "express": "^4.19.2",
+    "handlebars": "^4.7.8",
+    "hbs": "^4.2.0",
+    "node.js": "^0.0.1-security",
+    "nodemon": "^3.1.4",
+    "sequelize": "^6.37.3",
+    "sequelize-cli": "^6.6.2"
+  }
+}
