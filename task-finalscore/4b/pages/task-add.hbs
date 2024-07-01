@@ -34,13 +34,13 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active fw-semibold" href="#">Home</a>
+              <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="collections.html">Collections</a>
+              <a class="nav-link" href="collections">Collections</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="tasks.html">Tasks</a>
+              <a class="nav-link active fw-semibold" href="tasks">Tasks</a>
             </li>
           </ul>
         </div>
@@ -52,24 +52,37 @@
     >
       <div class="content p-3">
         <h1 style="text-align: center">Add Task</h1>
-        <form>
-            <div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label">ID Task</label>
-                <input type="text" class="form-control border-secondary" id="formGroupExampleInput" placeholder="">
-              </div>
+        <form method="post" action="/tasks">
               <div class="mb-3">
                 <label for="formGroupExampleInput" class="form-label">Name Task</label>
-                <input type="text" class="form-control border-secondary" id="formGroupExampleInput" placeholder="">
+                <input type="text" class="form-control border-secondary" id="name" placeholder="" name="name">
               </div>
-              <div class="mb-3">
+              {{!-- <div class="mb-3">
                 <label for="formGroupExampleInput" class="form-label">Status</label>
-                <input type="text" class="form-control border-secondary" id="formGroupExampleInput" placeholder="">
+                <input type="text" class="form-control border-secondary" id="is_done" placeholder="" name="is_done">
+              </div> --}}
+              <label for="formGroupExampleInput" class="form-label">Status</label>
+              <div class="row ms-auto mb-3">
+              <div class="form-check col-md-2">
+                <input class="form-check-input border-secondary" type="radio" name="flexRadioDefault" id="is_done">
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Yes
+                </label>
+              </div>
+              <div class="form-check col-md-2">
+                <input class="form-check-input border-secondary" type="radio" name="flexRadioDefault" id="is_done">
+                <label class="form-check-label" for="flexRadioDefault2">
+                  No
+                </label>
+              </div>
               </div>
               <div class="mb-3">
                 <label for="formGroupExampleInput" class="form-label">ID Collection</label>
-                <input type="text" class="form-control border-secondary" id="formGroupExampleInput" placeholder="">
+                <input type="text" class="form-control border-secondary" id="collection_id" placeholder="" name="collection_id">
               </div>
-              <button type="submit" class="btn btn-dark">Submit</button>
+              <div class="col-12">
+                <button type="submit" class="btn btn-dark" id="submit">Submit</button>
+              </div>
           </div>
            
         </form>

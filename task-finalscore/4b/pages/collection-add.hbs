@@ -34,13 +34,13 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active fw-semibold" href="#">Home</a>
+              <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="collections.html">Collections</a>
+              <a class="nav-link active fw-semibold" href="collections">Collections</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="tasks.html">Tasks</a>
+              <a class="nav-link" href="tasks">Tasks</a>
             </li>
           </ul>
         </div>
@@ -52,20 +52,21 @@
     >
       <div class="content p-3">
         <h1 style="text-align: center">Add Collection</h1>
-        <form>
-            <div class="mb-3">
+        <form method="post" action="/collections">
+            {{!-- <div class="mb-3">
                 <label for="formGroupExampleInput" class="form-label">ID Collection</label>
-                <input type="text" class="form-control border-secondary" id="formGroupExampleInput" placeholder="">
-              </div>
+                <input type="text" class="form-control border-secondary" id="formGroupExampleInput" placeholder="" required>
+              <div class="form-text" id="basic-addon4">Input ID Collection just 4 digit.</div>
+              </div> --}}
               <div class="mb-3">
                 <label for="formGroupExampleInput" class="form-label">Name Collection</label>
-                <input type="text" class="form-control border-secondary" id="formGroupExampleInput" placeholder="">
+                <input type="text" class="form-control border-secondary" id="name" placeholder="" name="name">
               </div>
               <div class="mb-3">
                 <label for="formGroupExampleInput" class="form-label">ID User</label>
-                <input type="text" class="form-control border-secondary" id="formGroupExampleInput" placeholder="">
+                <input type="text" class="form-control border-secondary" id="user_id" placeholder="" name="user_id">
               </div>
-              <button type="submit" class="btn btn-dark">Submit</button>
+              <button type="submit" class="btn btn-dark" id="submit">Submit</button>
           </div>
           </form>
       </div>
