@@ -41,12 +41,28 @@
             <li class="nav-item">
               <a class="nav-link" href="tasks">Tasks</a>
             </li>
-            <a href="./login" class="btn btn-dark position-absolute top-50 end-0 translate-middle-y"
-              style=" margin-right:12px;">Login</a>
+            {{!-- {{#if isLogin}} --}}
+            <form action="/logout" method="post">
+              <button
+                class="btn btn-dark position-absolute top-50 end-0 translate-middle-y"
+                style="margin-right: 90px; border:0;"
+              >Logout</button>
+            </form>
+            {{!-- {{/if}} --}}
+            <a
+              href="./login"
+              class="btn btn-dark position-absolute top-50 end-0 translate-middle-y"
+              style=" margin-right:12px; border:0;"
+            >Login</a>
           </ul>
         </div>
       </div>
     </nav>
+    {{#if messages.success}}
+      <div class="alert alert-success" role="alert">
+        {{message.success}}
+      </div>
+    {{/if}}
     <div class="container my-5 top-50 start-50 bg-body-tertiary">
       <div class="content p-3">
         <h1>WELCOME</h1>

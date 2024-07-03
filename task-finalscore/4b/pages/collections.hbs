@@ -53,21 +53,26 @@
     <div class="container my-5 top-50 start-50 bg-body-tertiary">
       <div class="content p-3">
         <h1 class="mb-4">List Collections
-          <a href="./collection-add" class="btn btn-dark ms-2">Add</a></h1>
+          {{!-- {{#if isLogin}} --}}
+          <a href="./collection-add" class="btn btn-dark ms-2">Add</a>
+          {{!-- {{/if}} --}}
+          </h1>
         {{#each data}}
-          <div class="card d-inline-flex me-3 mb-3" style="width: 18rem;">
-            <div class="card-header">
+          <div class="card d-inline-flex me-3 mb-3 border-secondary" style="width: 18rem;">
+            <div class="card-header border-secondary">
               <h5>{{id}}: {{name}}</h5>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">ID User: {{user_id}}</li>
+              <li class="list-group-item border-secondary">ID User: {{user_id}}</li>
               <li class="list-group-item d-flex justify-content-center">
+                {{!-- {{#if isLogin}} --}}
                 <form method="" action="/collection-ed/{{id}}">
                   <button type="submit" class="btn btn-dark me-2">Edit</button>
                 </form>
                 <form method="post" action="/collection-del/{{id}}">
                   <button type="submit" class="btn btn-dark">Delete</button>
                 </form>
+                {{!-- {{/if}} --}}
               </li>
             </ul>
           </div>

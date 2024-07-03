@@ -52,7 +52,8 @@
     >
       <div class="content p-3">
         <h1 style="text-align: center">Add Collection</h1>
-        <form method="post" action="/collections">
+        <form method="post" action="/collection-ed">
+        <input value="{{data.id}}" name="id" hidden>
             {{!-- <div class="mb-3">
                 <label for="formGroupExampleInput" class="form-label">ID Collection</label>
                 <input type="text" class="form-control border-secondary" id="formGroupExampleInput" placeholder="" required>
@@ -60,11 +61,11 @@
               </div> --}}
               <div class="mb-3">
                 <label for="formGroupExampleInput" class="form-label">Name Collection</label>
-                <input type="text" class="form-control border-secondary" id="name" placeholder="" name="name">
+                <input type="text" class="form-control border-secondary" id="name" placeholder="" name="name" value="{{data.name}}">
               </div>
               <div class="mb-3">
                 <label for="formGroupExampleInput" class="form-label">ID User</label>
-                <input type="text" class="form-control border-secondary" id="user_id" placeholder="" name="user_id">
+                <input type="text" class="form-control border-secondary" id="user_id" placeholder="" name="user_id" value="{{data.user_id}}">
               </div>
               <button type="submit" class="btn btn-dark" id="submit">Submit</button>
           </div>

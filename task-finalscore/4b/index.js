@@ -5,7 +5,7 @@ const path = require("path");
 const config = require("./config/config.json");
 const { Sequelize, QueryTypes, INTEGER } = require("sequelize");
 const sequelize = new Sequelize(config.development);
-const User = require("./models/users_tb").user;
+const User = require("./models").users_tb;
 const bcrypt = require("bcrypt");
 const session = require("express-session");
 const flash = require("express-flash");
@@ -79,16 +79,17 @@ async function loginEnter(req, res) {
 
   if (!isPasswordValid) {
     req.flash("danger", "Email / Password account is not found!");
-    return res.redirect("/login");
+    return res.redirect("/");
   }
 
   req.session.isLogin = true;
   req.session.user = {
-    name: user.name,
+    name: user.username,
     email: user.email,
   };
 
   req.flash("success", "Login berhasil!");
+  console.log("Login success!");
   res.redirect("/");
 }
 
@@ -97,7 +98,7 @@ async function logout(req, res) {
     if (err) return console.error("Logout failed!");
 
     console.log("Logout success!");
-    res.redirect("/");
+    res.redirect("/login");
   });
 }
 
@@ -106,19 +107,20 @@ function register(req, res) {
 }
 
 async function registerEnter(req, res) {
-  const { name, email, password } = req.body;
-  // console.log("name : ", name);
-  // console.log("email : ", email);
-  // console.log("password : ", password);
+  const { username, email, password } = req.body;
+  console.log("name : ", username);
+  console.log("email : ", email);
+  console.log("password : ", password);
   const salt = 10;
   const hashedpass = await bcrypt.hash(password, salt);
   console.log("hashedpasword", hashedpass);
   await User.create({
-    name,
+    username,
     email,
     password: hashedpass,
   });
-  res.redirect("/");
+  console.log("Register success!");
+  res.redirect("/login");
 }
 
 
@@ -180,8 +182,14 @@ async function task(req, res) {
 
 async function taskIST(req, res) {
   const { name, is_done, collection_id } = req.body;
-  // const date = new Date();
-  // const dateString = date.toISOString().slice(0, 19).replace("T", " ");
+  
+//   var rates = document.getElementsById('is_done');
+// var rate_value;
+// for(var i = 0; i < rates.length; i++){
+//     if(rates[i].checked){
+//         rate_value = rates[i].value;
+//     }
+// }
 
   const query = `INSERT INTO tasks_tbs (name,is_done,collection_id) 
  VALUES('${name}','${is_done}','${collection_id}')`;
