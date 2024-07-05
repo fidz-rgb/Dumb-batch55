@@ -29,37 +29,62 @@
 
 
 // program:
-const modalawal = 1000000000;
+// const modalawal = 1000000000;
 
-const investasi1 = 350000000;
-const keuntungan1 = investasi1 * ( 0.035 * 2);
-let rupiah1 = keuntungan1.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
-console.log(rupiah1);
+// const investasi1 = 350000000;
+// const keuntungan1 = investasi1 * ( 0.035 * 2);
+// let rupiah1 = keuntungan1.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+// console.log(rupiah1);
 
-let sisaModal = modalawal - investasi1;
+// let sisaModal = modalawal - investasi1;
 
-const investasi2 = sisaModal * 0.30;
-const keuntungan2 = investasi2 * (0.13 * 2);
-let rupiah2 = keuntungan2.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
-console.log(rupiah2);
+// const investasi2 = sisaModal * 0.30;
+// const keuntungan2 = investasi2 * (0.13 * 2);
+// let rupiah2 = keuntungan2.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+// console.log(rupiah2);
 
-sisaModal -= investasi2;
+// sisaModal -= investasi2;
 
-const investasi3 = sisaModal * 0.35;
-const keuntungan3 = investasi3 * (0.142 * 2);
-let rupiah3 = keuntungan3.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
-console.log(rupiah3);
+// const investasi3 = sisaModal * 0.35;
+// const keuntungan3 = investasi3 * (0.142 * 2);
+// let rupiah3 = keuntungan3.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+// console.log(rupiah3);
 
-sisaModal -= investasi3;
+// sisaModal -= investasi3;
 
-const investasi4 = sisaModal;
-const keuntungan4 = investasi4 * (0.125 * 2);
-let rupiah4 = keuntungan4.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
-console.log(rupiah4);
+// const investasi4 = sisaModal;
+// const keuntungan4 = investasi4 * (0.125 * 2);
+// let rupiah4 = keuntungan4.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+// console.log(rupiah4);
 
+// const totalKeuntungan = keuntungan1 + keuntungan2 + keuntungan3 + keuntungan4;
+// let rpttluntung = totalKeuntungan.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+// const ttlkseluruhan = modalawal + totalKeuntungan;
+// let rpttlseluruh = ttlkseluruhan.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+// console.log("Total Keuntungan setelah 2 tahun adalah: Rp " + rpttluntung);
+// console.log("Total uang keseluruhan stlah 2 tahun: Rp "+ rpttlseluruh);
+
+// program yg sudah di refactory
+// Modal awal
+const modalAwal = 1000000000;
+
+// Fungsi untuk menghitung dan mencetak keuntungan dari investasi
+function hitungKeuntungan(modal, persentase, periode) {
+  const investasi = modal * persentase;
+  const keuntungan = investasi * periode;
+  console.log(keuntungan.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' }));
+  return keuntungan;
+}
+
+// Keuntungan dari setiap investasi
+const keuntungan1 = hitungKeuntungan(modalAwal, 0.35, 0.07); // 0.035 * 2 = 0.07
+const keuntungan2 = hitungKeuntungan(modalAwal - 350000000, 0.30, 0.26); // 0.13 * 2 = 0.26
+const keuntungan3 = hitungKeuntungan(modalAwal - 350000000 - 195000000, 0.35, 0.284); // 0.142 * 2 = 0.284
+const keuntungan4 = hitungKeuntungan(modalAwal - 350000000 - 195000000 - 157500000, 1, 0.25); // 0.125 * 2 = 0.25
+
+// Total keuntungan dan total keseluruhan
 const totalKeuntungan = keuntungan1 + keuntungan2 + keuntungan3 + keuntungan4;
-let rpttluntung = totalKeuntungan.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
-const ttlkseluruhan = modalawal + totalKeuntungan;
-let rpttlseluruh = ttlkseluruhan.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
-console.log("Total Keuntungan setelah 2 tahun adalah: Rp " + rpttluntung);
-console.log("Total uang keseluruhan stlah 2 tahun: Rp "+ rpttlseluruh);
+const totalKeseluruhan = modalAwal + totalKeuntungan;
+
+console.log("Total Keuntungan setelah 2 tahun adalah: " + totalKeuntungan.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' }));
+console.log("Total uang keseluruhan setelah 2 tahun: " + totalKeseluruhan.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' }));
