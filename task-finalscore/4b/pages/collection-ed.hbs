@@ -51,14 +51,9 @@
       class="container w-50 position-absolute top-50 start-50 translate-middle bg-body-tertiary border-start" style="margin-top: 30px;"
     >
       <div class="content p-3">
-        <h1 style="text-align: center">Add Collection</h1>
+        <h1 style="text-align: center">Edit Collection</h1>
         <form method="post" action="/collection-ed">
         <input value="{{data.id}}" name="id" hidden>
-            {{!-- <div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label">ID Collection</label>
-                <input type="text" class="form-control border-secondary" id="formGroupExampleInput" placeholder="" required>
-              <div class="form-text" id="basic-addon4">Input ID Collection just 4 digit.</div>
-              </div> --}}
               <div class="mb-3">
                 <label for="formGroupExampleInput" class="form-label">Name Collection</label>
                 <input type="text" class="form-control border-secondary" id="name" placeholder="" name="name" value="{{data.name}}">

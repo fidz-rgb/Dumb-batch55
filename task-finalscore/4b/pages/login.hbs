@@ -55,7 +55,12 @@
     >
       <div class="content p-3">
         <h1 style="text-align: center">Login</h1>
-        <form method="" action="/">
+        {{#if messages.danger}}
+        <div class="alert alert-danger" role="alert">
+          {{message.danger}}
+        </div>
+        {{/if}}
+        <form method="post" action="/login">
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label"
               >Email address</label

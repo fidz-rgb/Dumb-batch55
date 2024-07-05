@@ -41,14 +41,14 @@
             <li class="nav-item">
               <a class="nav-link" href="tasks">Tasks</a>
             </li>
-            {{!-- {{#if isLogin}} --}}
+            {{#if isLogin}}
             <form action="/logout" method="post">
               <button
                 class="btn btn-dark position-absolute top-50 end-0 translate-middle-y"
                 style="margin-right: 90px; border:0;"
               >Logout</button>
             </form>
-            {{!-- {{/if}} --}}
+            {{/if}}
             <a
               href="./login"
               class="btn btn-dark position-absolute top-50 end-0 translate-middle-y"
@@ -65,7 +65,11 @@
     {{/if}}
     <div class="container my-5 top-50 start-50 bg-body-tertiary">
       <div class="content p-3">
-        <h1>WELCOME</h1>
+        <h1>WELCOME
+          {{#if isLogin}}
+          {{user.username}}
+          {{/if}}
+        </h1>
         <p style="text-align: justify;">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim veniam
           tempora quam culpa accusamus numquam esse voluptate, et, distinctio

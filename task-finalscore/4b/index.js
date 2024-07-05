@@ -10,12 +10,13 @@ const bcrypt = require("bcrypt");
 const session = require("express-session");
 const flash = require("express-flash");
 
-
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "./pages"));
 
 app.use("/assets", express.static(path.join(__dirname, "./assets")));
 app.use(express.urlencoded({ extended: false }));
+
+
 
 app.use(
   session({
@@ -73,21 +74,23 @@ async function loginEnter(req, res) {
   });
   if (!user) {
     req.flash("danger", "Email / Password account is not found!");
+    console.log("Login failed!");
     return res.redirect("/login");
   }
   const isPasswordValid = await bcrypt.compare(password, user.password);
 
   if (!isPasswordValid) {
     req.flash("danger", "Email / Password account is not found!");
-    return res.redirect("/");
+    console.log("Login failed!");
+    return res.redirect("/login");
   }
 
   req.session.isLogin = true;
   req.session.user = {
-    name: user.username,
     email: user.email,
+    username: user.username,
   };
-
+  
   req.flash("success", "Login berhasil!");
   console.log("Login success!");
   res.redirect("/");
@@ -125,16 +128,18 @@ async function registerEnter(req, res) {
 
 
 function home(req, res) {
-  res.render("index");
+  const isLogin = req.session.isLogin;
+  const user = req.session.user;
+  res.render("index", {isLogin,user});
 }
 
 async function collections(req, res) {
   const query = "SELECT * FROM collections_tbs";
   const obj = await sequelize.query(query, { type: QueryTypes.SELECT });
   // console.log("data object : ", obj);
-  // const isLogin = req.session.isLogin;
-  // const user = req.session.user;
-  res.render("collections", { data: obj });
+  const isLogin = req.session.isLogin;
+  const user = req.session.user;
+  res.render("collections", { data: obj,isLogin,user });
 }
 
 async function collectIST(req, res) {
@@ -177,20 +182,14 @@ async function delcollection(req, res) {
 async function task(req, res) {
   const query = "SELECT * FROM tasks_tbs";
   const obj = await sequelize.query(query, { type: QueryTypes.SELECT });
-  res.render("tasks", { data: obj });
+  const isLogin = req.session.isLogin;
+  const user = req.session.user;
+  res.render("tasks", { data: obj,isLogin,user });
 }
 
 async function taskIST(req, res) {
   const { name, is_done, collection_id } = req.body;
-  
-//   var rates = document.getElementsById('is_done');
-// var rate_value;
-// for(var i = 0; i < rates.length; i++){
-//     if(rates[i].checked){
-//         rate_value = rates[i].value;
-//     }
-// }
-
+ 
   const query = `INSERT INTO tasks_tbs (name,is_done,collection_id) 
  VALUES('${name}','${is_done}','${collection_id}')`;
   await sequelize.query(query, { type: QueryTypes.INSERT });
@@ -198,8 +197,10 @@ async function taskIST(req, res) {
   res.redirect("/tasks");
 }
 
-function addtask(req, res) {
-  res.render("task-add");
+async function addtask(req, res) {
+  const query = "SELECT * FROM tasks_tbs";
+  const obj = await sequelize.query(query, { type: QueryTypes.SELECT });
+  res.render("task-add", {data: obj});
 }
 
 async function edtaskBt(req, res) {
@@ -207,7 +208,8 @@ async function edtaskBt(req, res) {
   const edt = await sequelize.query(
     `SELECT * FROM tasks_tbs WHERE id = ${id}`,
     {type: QueryTypes.SELECT});
-
+    const query = "SELECT * FROM tasks_tbs";
+    const obj = await sequelize.query(query, { type: QueryTypes.SELECT });
   res.render("task-ed", { data: edt[0] });
 }
 

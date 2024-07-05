@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   tasks_tb.init({
     name: DataTypes.STRING,
-    is_done: DataTypes.STRING,
+    is_done: DataTypes.BOOLEAN,
     collection_id: DataTypes.INTEGER
   }, {
     sequelize,

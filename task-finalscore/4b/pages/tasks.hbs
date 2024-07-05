@@ -41,11 +41,19 @@
             <li class="nav-item">
               <a class="nav-link active fw-semibold" href="tasks">Tasks</a>
             </li>
-            <button
-              type="button"
+             {{#if isLogin}}
+            <form action="/logout" method="post">
+              <button
+                class="btn btn-dark position-absolute top-50 end-0 translate-middle-y"
+                style="margin-right: 90px; border:0;"
+              >Logout</button>
+            </form>
+            {{/if}}
+           <a
+              href="./login"
               class="btn btn-dark position-absolute top-50 end-0 translate-middle-y"
-              style=" margin-right:12px;"
-            >Login</button>
+              style=" margin-right:12px; border:0;"
+            >Login</a>
           </ul>
         </div>
       </div>
@@ -53,7 +61,9 @@
     <div class="container my-5 top-50 start-50 bg-body-tertiary border-start">
       <div class="content p-3">
         <h1 class="mb-4">List Task
+          {{#if isLogin}}
           <a href="./task-add" class="btn btn-dark ms-2">Add</a>
+          {{/if}}
         </h1>
         {{#each data}}
           <div class="card d-inline-flex me-3 mb-3" style="width: 18rem;">
@@ -62,14 +72,21 @@
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">ID Collection: {{collection_id}}</li>
-              <li class="list-group-item">Status: {{is_done}}</li>
+              <li class="list-group-item">Status:
+                {{#if is_done}}
+                  Yes
+                {{else}}
+                  No
+                {{/if}}</li>
               <li class="list-group-item d-flex justify-content-center">
+                 {{#if ../isLogin}}
                 <form method="" action="/task-ed/{{id}}">
                   <button type="submit" class="btn btn-dark me-2">Edit</button>
                 </form>
                 <form method="post" action="/task-del/{{id}}">
                   <button type="submit" class="btn btn-dark">Delete</button>
                 </form>
+                {{/if}}
               </li>
             </ul>
           </div>
